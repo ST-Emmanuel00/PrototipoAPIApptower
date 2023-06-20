@@ -6,7 +6,6 @@ const schema_residente = Schema ({
 
         type: String,
         enum: ['CC', 'CE'],
-        unique: true,
         required: [true, 'El tipo de documento del residente es obligatorio']
 
     },
@@ -14,13 +13,15 @@ const schema_residente = Schema ({
     numero_documento_residente: {
 
         type: String,
-        required: [true, 'El numero de documento del residente es obligatorio']
+        required: [true, 'El numero de documento del residente es obligatorio'],
+        unique: true
 
     },
 
     nombre_residente: {
 
         type: String,
+        default: Date.now,
         required: [true, 'El nombre del residente es obligatorio']
 
     },
@@ -68,7 +69,7 @@ const schema_residente = Schema ({
     tipo_residente: {
 
         type: String,
-        enum:['PROPIETARIO', 'ARRENDATARIO '],
+        enum:['PROPIETARIO', 'ARRENDATARIO'],
         required: [true, 'El tipo de residente es obligatorio']
 
     },
@@ -76,6 +77,7 @@ const schema_residente = Schema ({
     residencia: {
 
         type: String,
+        default: null,
         required: [true, 'La residencia es obligatorio']
         
     },
@@ -83,6 +85,7 @@ const schema_residente = Schema ({
     habita: {
 
         type: Boolean,
+        default: true,
         required: [true, 'El estado de habita es obligatorio']
         
     },
@@ -97,6 +100,7 @@ const schema_residente = Schema ({
     fecha_fin: {
 
         type: Date,
+        default: null
 
     },
 
