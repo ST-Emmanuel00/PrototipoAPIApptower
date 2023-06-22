@@ -58,11 +58,27 @@ const put_residente = async (req, res = response) => {
     try {
 
         if (body.tipodemodificacion == 'unitario') {
-            await Residentes.findOneAndUpdate({
-                numero_documento_residente: body.numero_documento_residente,
+            await Residentes.findOneAndUpdate(
+                { _id: body._id },
+                {
+                    tipo_documento_residente: body.tipo_documento_residente,
+                    numero_documento_residente: body.numero_documento_residente,
+                    nombre_residente: body.nombre_residente,
+                    apellido_residente: body.apellido_residente,
+                    fecha_nacimiento: body.fecha_nacimiento,
+                    genero_residente: body.genero_residente,
+                    telefono_residente: body.telefono_residente,
+                    correo: body.correo,
+                    tipo_residente: body.tipo_residente,
+                    residencia: body.residencia,
+                    habita: body.habita,
+                    // fecha_inicio: body.fecha_inicio esta dato no se edita
+                    fecha_fin: body.fecha_fin,
+                    estado: body.estado,
 
-            })
+                })
             mensaje = 'Residente actualizado exitosamente. Modificacion simple'
+            
         } else {
             await Residentes.updateMany(
                 { _id: body._id },
@@ -77,6 +93,8 @@ const put_residente = async (req, res = response) => {
                     correo: body.correo,
                     tipo_residente: body.tipo_residente,
                     residencia: body.residencia,
+                    habita: body.habita,
+
                     // fecha_inicio: body.fecha_inicio esta dato no se edita
                     fecha_fin: body.fecha_fin,
                     estado: body.estado,
