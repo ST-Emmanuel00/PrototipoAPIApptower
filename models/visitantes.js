@@ -53,6 +53,7 @@ const schema_visitante = Schema ({
     anfitrion: {
 
         type: String,
+        default: null,
         required: [true, 'El anfitrion es obligatorio']
         
     },
