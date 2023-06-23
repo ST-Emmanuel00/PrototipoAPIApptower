@@ -20,6 +20,7 @@ class Server {
         this.residentesPath = '/api/residentes'
         this.propietariosPath = '/api/propietarios'
         this.visitantesPath = '/api/visitantes'
+        this.espacios_path = '/api/espacios'
         
         this.middlewares()
 
@@ -47,6 +48,8 @@ class Server {
         this.app.use(this.residentesPath, require ('../routes/residentes'))
         this.app.use(this.propietariosPath, require ('../routes/propietarios'))
         this.app.use(this.visitantesPath, require ('../routes/visitantes'))
+        this.app.use(this.espacios_path, require ('../routes/espacios'))
+
 
         
           
