@@ -32,6 +32,8 @@ const post_espacio = async (req, res = response) => {
 
     const espacios = new Espacios(body)
 
+    console.log(espacios);
+
     try {
 
         await espacios.save({})

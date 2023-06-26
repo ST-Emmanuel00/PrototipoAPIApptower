@@ -31,22 +31,24 @@ const post_residente = async (req, res = response) => {
     const body = req.body
 
     const residente = new Residentes(body)
+    // console.log(tipo_documento_residente)
 
     try {
 
+        console.log('esta vacio')
         await residente.save({})
         mensaje = 'Residente registrado exitosamente'
 
     } catch (error) {
 
-        mensaje = error
+    mensaje = error
 
-    }
-    res.json({
+}
+res.json({
 
-        residentes: mensaje
+    residentes: mensaje
 
-    })
+})
 
 }
 
@@ -78,7 +80,7 @@ const put_residente = async (req, res = response) => {
 
                 })
             mensaje = 'Residente actualizado exitosamente. Modificacion simple'
-            
+
         } else {
             await Residentes.updateMany(
                 { _id: body._id },

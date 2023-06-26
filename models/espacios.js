@@ -14,7 +14,16 @@ const schema_espacios = Schema ({
 
         type: String,
         required: [true, 'El numero el nombre del es obligatorio'],
-        unique: true
+        unique: true,
+        validate: {
+            validator: value => {
+
+                const ER_nombre_espacio = /^[A-Z0-9]+$/
+                return ER_nombre_espacio.test(value)
+            },
+
+            message: value => 'Revisa el nombre del espacio'
+        }
 
     },
 
