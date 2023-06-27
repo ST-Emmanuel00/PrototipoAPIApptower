@@ -19,8 +19,8 @@ const schema_vehiculo = Schema({
         required: [true,'Se requiere un espacio para poder designarle al vehiculo']
     },
     estado:{
-        type: Boolean,
-        default: true,
+        type: String,
+        default: "Ingresó",
         required: [true,'el estado es obligatorio']
     }
 
