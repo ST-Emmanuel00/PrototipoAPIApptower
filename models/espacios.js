@@ -1,6 +1,6 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose')
 
-const schema_espacios = Schema ({
+const schema_espacios = Schema({
 
     tipo_espacio: {
 
@@ -18,7 +18,8 @@ const schema_espacios = Schema ({
         validate: {
             validator: value => {
 
-                const ER_nombre_espacio = /^[A-Z0-9]+$/
+                const ER_nombre_espacio = /^[A-Z0-9\s]+$/;
+
                 return ER_nombre_espacio.test(value)
             },
 
@@ -30,7 +31,7 @@ const schema_espacios = Schema ({
     area: {
 
         type: Number,
-        default: null ,
+        default: null,
         min: [0, "No puede haber area inferior a cero"]
 
 
@@ -41,7 +42,7 @@ const schema_espacios = Schema ({
         type: Number,
         default: null,
         min: [0, "No puede haber capacidad inferior a cero"]
-        
+
     },
 
     estado: {
@@ -50,7 +51,7 @@ const schema_espacios = Schema ({
         default: 'ACTIVO',
         enum: ['ACTIVO', 'INACTIVO'],
         required: [true, 'El estado del residente es obligatorio']
-        
+
     }
 })
 
