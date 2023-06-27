@@ -13,6 +13,12 @@ const schema_visitante = Schema ({
     numero_documento_visitante: {
 
         type: String,
+        validate: {
+            validator: value => {
+                const ER_tipo_documento = /^[0-9]+$/
+                return ER_tipo_documento.test(value)
+            },
+        },
         required: [true, 'El numero de documento del residente es obligatorio'],
         unique: true
 
@@ -21,6 +27,12 @@ const schema_visitante = Schema ({
     nombre_visitante: {
 
         type: String,
+        validate: {
+            validator: value => {
+                const ER_nombre = /^[A-Za-z\s]+$/
+                return ER_nombre.test(value)
+            },
+        },
         required: [true, 'El nombre del residente es obligatorio']
 
     },
@@ -28,6 +40,12 @@ const schema_visitante = Schema ({
     apellido_visitante: {
 
         type: String,
+        validate: {
+            validator: value => {
+                const ER_apellido = /^[A-Za-z\s]+$/
+                return ER_apellido.test(value)
+            },
+        },
         required: [true, 'El apellido del residente es obligatorio']
         
     },

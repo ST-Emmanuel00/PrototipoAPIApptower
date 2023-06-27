@@ -13,22 +13,42 @@ const schema_propietario = Schema ({
     numero_documento_propietario: {
 
         type: String,
-        required: [true, 'El numero de documento del residente es obligatorio'],
-        unique: true
+        unique: true,
+
+        validate:{
+            validator: value => {
+                const ER_tipo_documento = /^[0-9]+$/
+                return ER_tipo_documento.test(value)
+            },
+        },
+        required: [true, 'El numero de documento obligatorio']
 
     },
 
     nombre_propietario: {
 
         type: String,
-        required: [true, 'El nombre del residente es obligatorio']
+        validate:{
+            validator: value => {
+                const ER_nombre = /^[A-Za-z\s]+$/
+                return ER_nombre.test(value)
+            },
+        },
+        required: [true, 'El nombre del propietario es obligatorio']
 
     },
 
     apellido_propietario: {
 
         type: String,
-        required: [true, 'El apellido del residente es obligatorio']
+        validate:{
+            validator: value => {
+                const ER_apellido = /^[A-Za-z\s]+$/
+                return ER_apellido.test(value)
+            },
+        },
+
+        required: [true, 'El apellido del propietario es obligatorio']
         
     },
 
@@ -36,7 +56,14 @@ const schema_propietario = Schema ({
     fecha_nacimiento: {
 
         type: Date,
-        required: [true, 'La edad del propietario es obligatorio'],
+        validate:{
+            validator: value => {
+
+                return new Date (value)
+
+            },
+        },
+        required: [true, 'La fecha nacimiento es obligatorio'],
         
     },
 
@@ -52,6 +79,15 @@ const schema_propietario = Schema ({
     telefono_propietario: {
 
         type: String,
+        validate:{
+
+            validator: value => {
+
+                const ER_telefono = /^[0-9]{10}$/
+                return ER_telefono.test(value)
+            },
+
+        },
         required: [true, 'El numemero de telefono del propietario es obligatorio']
         
     },
@@ -60,6 +96,14 @@ const schema_propietario = Schema ({
     correo: {
 
         type: String,
+
+        validate:{
+            validator: value => {
+
+                const ER_correo = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+                return ER_correo.test(value)
+            },
+        },
         required: [true, 'El correo es obligatorio']
 
     },
