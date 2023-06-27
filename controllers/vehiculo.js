@@ -1,10 +1,10 @@
 const { response } = require('express');
-const vehiculo = require('../models/vehiculo');
+const Vehiculo = require('../models/vehiculo');
 
 const get_vehiculo = async (req, res = response) => {
     let mensaje = '';
     try {
-        const vehiculo = await vehiculo.find();
+        const vehiculo = await Vehiculo.find();
         mensaje = vehiculo
     } catch (error) {
         mensaje = error
@@ -17,7 +17,7 @@ const get_vehiculo = async (req, res = response) => {
 const post_vehiculo = async (req, res = response) => {
     let mensaje = ''
     const body = req.body
-    const vehiculo = new vehiculo(body)
+    const vehiculo = new Vehiculo(body)
 
     try {
 
@@ -37,7 +37,7 @@ const put_vehiculo = async (req, res) => {
     const body = req.body;
     try {
         await
-            vehiculo.FindOneAndUpdate({
+            Vehiculo.FindOneAndUpdate({
                 _id: body._id
             }, {
                 placa: body.placa,
@@ -59,7 +59,7 @@ const delete_vehiculo = async (req, res) => {
     let mensaje = '';
     try {
         await
-            vehiculo.FindOneAndDelete({
+            Vehiculo.FindOneAndDelete({
                 _id: body._id,
             })
         mensaje = 'Eliminado exitosamente'
