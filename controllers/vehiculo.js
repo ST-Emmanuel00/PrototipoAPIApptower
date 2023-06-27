@@ -59,8 +59,8 @@ const delete_vehiculo = async (req, res) => {
     let mensaje = '';
     try {
         await
-            Vehiculo.FindOneAndDelete({
-                _id: body._id,
+            Vehiculo.findOneAndDelete({
+                _id: body._id
             })
         mensaje = 'Eliminado exitosamente'
     } catch (error) {
