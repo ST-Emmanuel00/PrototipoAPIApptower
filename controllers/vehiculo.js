@@ -37,7 +37,7 @@ const put_vehiculo = async (req, res) => {
     const body = req.body;
     try {
         await
-            Vehiculo.FindOneAndUpdate({
+            Vehiculo.updateMany({
                 _id: body._id
             }, {
                 placa: body.placa,
